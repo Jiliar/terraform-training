@@ -36,6 +36,7 @@ variable "server_name" {
 
 variable "owner" {
   description = "Owner of the infrastructure"
+  default     = "Jiliar Silgado"
   type        = string
 }
 
@@ -95,11 +96,17 @@ variable "updated_on" {
 
 variable "contact" {
   description = "Contact person"
+  default     = "Jiliar Silgado"
   type        = string
 }
 
 variable "contact_email" {
   description = "Contact email address"
+  default     = "jiliar.silgado@gmail.com"
+  validation {
+    condition     = can(regex("^.+@.+\\..+$", var.contact_email))
+    error_message = "Invalid email format for contact_email"
+  }
   type        = string
 }
 
@@ -107,9 +114,4 @@ variable "team" {
   description = "Team responsible"
   type        = string
   default     = "DevOps"
-}
-
-variable "key_name" {
-  description = "Name of the SSH key pair"
-  type        = string
 }

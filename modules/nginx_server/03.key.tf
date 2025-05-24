@@ -1,10 +1,10 @@
 ## KeyPair: SSH
 resource "aws_key_pair" "nginx-server-ssh" {
-  key_name   = "${var.key_name}-ssh"
-  public_key = file("${var.key_name}.key.pub")
+  key_name   = "${var.server_name}-ssh"
+  public_key = file("ssh_keys/${var.server_name}.key.pub")
 
   tags = {
-    Name         = "${var.key_name}-ssh"
+    Name         = "${var.server_name}-ssh"
     Environment  = var.environment
     Application  = var.application
     Owner        = var.owner
